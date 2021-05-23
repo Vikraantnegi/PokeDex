@@ -4,16 +4,21 @@ import { SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, View} from 'reac
 
 const App = () => {
   return (
-    <SafeAreaView>
-      <StatusBar  />
-    </SafeAreaView>
+    <View style={styles.AppContainer}>
+      <Text>Hello</Text>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  AppContainer: {
+    paddingTop: 20,
+    height: '100%',
+    backgroundColor: 'white',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
