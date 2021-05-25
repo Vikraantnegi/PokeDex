@@ -12,6 +12,10 @@ import SearchScreen from '../Screens/HomeStack/SearchScreen';
 import FavoriteScreen from '../Screens/HomeStack/FavoriteScreen';
 import SettingsScreen from '../Screens/HomeStack/SettingsScreen';
 import EvolutionScreen from '../Screens/HomeStack/EvolutionScreen';
+import TypesScreen from '../Screens/HomeStack/TypesScreen';
+import TrainersScreen from '../Screens/HomeStack/TrainersScreen';
+import AbilitiesScreen from '../Screens/HomeStack/AbilitiesScreen';
+import MovesScreen from '../Screens/HomeStack/MovesScreen';
 import CreatorFavScreen from '../Screens/HomeStack/CreatorFavScreen';
 import TopNewsScreen from '../Screens/HomeStack/TopNewsScreen';
 import OnBoardingScreen from '../Screens/AuthStack/OnBoardingScreen';
@@ -92,6 +96,10 @@ export const HomeStackScreen = () => {
             <HomeStack.Screen name="News" component={NewsScreen} />
             <HomeStack.Screen name="LegendaryPokemon" component={LegendaryPokemonScreen} />
             <HomeStack.Screen name="Evolution" component={EvolutionScreen} />
+            <HomeStack.Screen name="Types" component={TypesScreen} />
+            <HomeStack.Screen name="Trainers" component={TrainersScreen} />
+            <HomeStack.Screen name="Abilities" component={AbilitiesScreen} />
+            <HomeStack.Screen name="Moves" component={MovesScreen} />
         </HomeStack.Navigator>
     );
 };
