@@ -27,8 +27,8 @@ const authSlice = createSlice({
 
 export const { setUserLoginDetails, setSignOutState } = authSlice.actions;
 
-export const UserName = state => state.user.name;
-export const UserEmail = state => state.user.email;
-export const UserImage = state => state.user.image;
+export const UserName = state => state.auth.name;
+export const UserEmail = state => state.auth.email;
+export const UserImage = state => state.auth.image;
 
 export default authSlice.reducer;

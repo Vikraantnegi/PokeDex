@@ -1,25 +1,23 @@
 /* eslint-disable prettier/prettier */
-import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, Text, View} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import { createBottomTabNavigator  } from '@react-navigation/bottom-tabs';
 import { Provider } from 'react-redux';
 import { store } from './src/redux/store';
-
-const HomeStack = createStackNavigator();
-const AuthStack = createStackNavigator();
-const Drawer = createDrawerNavigator();
-const Tabs = createBottomTabNavigator();
+import { RootStackScreen } from './src/Navigation/Navigation';
+import SplashScreen from './src/Screens/SplashScreen';
 
 const App = () => {
+  const [time, setTimeUp] = useState(false);
+
+  setTimeout(() => {
+    setTimeUp(true);
+  }, 1500);
+
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <View style={styles.AppContainer}>
-          <Text>Hello</Text>
-        </View>
+        { time ? <RootStackScreen /> : <SplashScreen /> }
       </NavigationContainer>
     </Provider>
   );
