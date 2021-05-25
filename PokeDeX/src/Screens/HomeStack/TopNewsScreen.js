@@ -2,10 +2,10 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-export default function FavoritesScreen() {
+export default function TopNewsScreen() {
     return (
         <View>
-            <Text>Favorites Screen</Text>
+            <Text>Top News Screen</Text>
         </View>
     );
 }
