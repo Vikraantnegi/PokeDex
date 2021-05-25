@@ -1,12 +1,27 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import { SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, View} from 'react-native';
+import { StyleSheet, Text, View} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createBottomTabNavigator  } from '@react-navigation/bottom-tabs';
+import { Provider } from 'react-redux';
+import { store } from './src/redux/store';
+
+const HomeStack = createStackNavigator();
+const AuthStack = createStackNavigator();
+const Drawer = createDrawerNavigator();
+const Tabs = createBottomTabNavigator();
 
 const App = () => {
   return (
-    <View style={styles.AppContainer}>
-      <Text>Hello</Text>
-    </View>
+    <Provider store={store}>
+      <NavigationContainer>
+        <View style={styles.AppContainer}>
+          <Text>Hello</Text>
+        </View>
+      </NavigationContainer>
+    </Provider>
   );
 };
 
