@@ -26,30 +26,27 @@ import ProfileScreen from '../Screens/AuthStack/ProfileScreen';
 import EditProfileScreen from '../Screens/AuthStack/EditProfileScreen';
 import ChangePasswordScreen from '../Screens/AuthStack/ChangePasswordScreen';
 import AboutScreen from '../Screens/HomeStack/AboutScreen';
-import {useSelector} from 'react-redux';
-import { UserName } from '../redux/features/authSlice';
+import SplashScreen from '../Screens/SplashScreen';
 
 const RootStack = createStackNavigator();
 export const RootStackScreen = () => {
-    const username = useSelector(UserName);
-    console.log(username);
     return (
         <RootStack.Navigator headerMode="none">
-            {
-                true ? (
-                    <RootStack.Screen name="App" component={DrawerScreen}
-                        // options={{
-                        // animationEnabled: false,
-                        // }}
-                    />
-                    ) : (
-                    <RootStack.Screen name="Auth" component={AuthStackScreen}
-                        // options={{
-                        // animationEnabled: false,
-                        // }}
-                    />
-                )
-            }
+            <RootStack.Screen name="Splash" component={SplashScreen}
+                // options={{
+                // animationEnabled: false,
+                // }}
+            />
+            <RootStack.Screen name="Home" component={DrawerScreen}
+                // options={{
+                // animationEnabled: false,
+                // }}
+            />
+            <RootStack.Screen name="Auth" component={AuthStackScreen}
+                // options={{
+                // animationEnabled: false,
+                // }}
+            />
         </RootStack.Navigator>
     );
 };
@@ -84,7 +81,7 @@ const HomeStack = createStackNavigator();
 export const HomeStackScreen = () => {
     return (
         <HomeStack.Navigator
-            initialRouteName="Home"
+            initialRouteName="Splash"
             screenOptions={{
                 headerShown: false,
             }}
