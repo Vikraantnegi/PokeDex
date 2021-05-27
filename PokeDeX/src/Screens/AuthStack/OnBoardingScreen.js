@@ -1,10 +1,12 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable react-native/no-inline-styles */
 import React, {useState} from 'react';
-import { View, Text, StyleSheet, Pressable, Image } from 'react-native';
+import { View, Text, StyleSheet, Pressable } from 'react-native';
 import {HelperStyles} from '../../HelperStyles';
 import Icon from 'react-native-vector-icons/Feather';
-import GestureRecognizer from 'react-native-swipe-gestures';
+import FirstScreen from '../../Components/OnBoarding/FirstScreen';
+import SecondScreen from '../../Components/OnBoarding/SecondScreen';
+import ThirdScreen from '../../Components/OnBoarding/ThirdScreen';
 
 export default function OnBoardingScreen({navigation}) {
     const [OnboardNumber, setNumber] = useState(1);
@@ -13,75 +15,16 @@ export default function OnBoardingScreen({navigation}) {
         if (OnboardNumber !== 3){
             setNumber(OnboardNumber + 1);
         }
-        console.log(OnboardNumber);
     };
     const onSwipeleft = () => {
         if (OnboardNumber !== 1){
             setNumber(OnboardNumber - 1);
         }
-        console.log(OnboardNumber);
     };
 
     const config = {
         velocityThreshold: 0.3,
         directionalOffsetThreshold: 80,
-    };
-
-    const SecondScreen = () => {
-        return (
-            <GestureRecognizer
-                onSwipeLeft={() => onSwipeRight()}
-                onSwipeRight={() => onSwipeleft()}
-                config={config}
-                style={styles.gesture}
-                >
-                    <View style={styles.Inner}>
-                        <Image source={require('../../assets/charizard.png')} style={styles.InnerImage} />
-                        <View style={styles.InnerView}>
-                            <Text style={styles.InnerTextHeading}>Pokémon Fandom</Text>
-                            <Text style={styles.InnerText}>Find every single detail of {'\n'} any pokémon you want.</Text>
-                        </View>
-                    </View>
-            </GestureRecognizer>
-        );
-    };
-
-    const ThirdScreen = () => {
-        return (
-            <GestureRecognizer
-                onSwipeLeft={() => onSwipeRight()}
-                onSwipeRight={() => onSwipeleft()}
-                config={config}
-                style={styles.gesture}
-                >
-                    <View style={styles.Inner}>
-                        <Image source={require('../../assets/list.png')} style={styles.InnerImage} />
-                        <View style={styles.InnerView}>
-                            <Text style={styles.InnerTextHeading}>Set Favorites</Text>
-                            <Text style={styles.InnerText}>Create a separate section for {'\n'} your favorite pokémon.</Text>
-                        </View>
-                    </View>
-            </GestureRecognizer>
-        );
-    };
-
-    const FirstScreen = () => {
-        return (
-            <GestureRecognizer
-                onSwipeLeft={() => onSwipeRight()}
-                onSwipeRight={() => onSwipeleft()}
-                config={config}
-                style={styles.gesture}
-                >
-                    <View style={styles.Inner}>
-                        <Image source={require('../../assets/pokepik.png')} style={styles.InnerImage} />
-                        <View style={styles.InnerView}>
-                            <Text style={styles.InnerTextHeading}>Pokédex</Text>
-                            <Text style={styles.InnerText}>Pokédex was invented by Professor Oak.</Text>
-                        </View>
-                    </View>
-            </GestureRecognizer>
-        );
     };
 
     return (
@@ -94,11 +37,11 @@ export default function OnBoardingScreen({navigation}) {
             <View style={styles.onBoard}>
                 {
                     OnboardNumber === 1 ? (
-                        <FirstScreen />
+                        <FirstScreen styles={styles} swipeLeft={onSwipeRight} swipeRight={onSwipeleft} config={config} />
                     ) : OnboardNumber === 2 ? (
-                        <SecondScreen />
+                        <SecondScreen styles={styles} swipeLeft={onSwipeRight} swipeRight={onSwipeleft} config={config} />
                     ) : (
-                        <ThirdScreen />
+                        <ThirdScreen styles={styles} swipeLeft={onSwipeRight} swipeRight={onSwipeleft} config={config} />
                     )
                 }
             </View>
@@ -126,7 +69,9 @@ export default function OnBoardingScreen({navigation}) {
                         <Pressable style={styles.Button} onPress={() => navigation.navigate('SignUp')}>
                             <Text style={styles.ButtonText}>Create Account</Text>
                         </Pressable>
-                        <Text style={styles.ActionText}>Already have an account? <Text onPress={() => navigation.navigate('Login')} style={styles.Login}>Login!</Text></Text>
+                        <Text style={styles.ActionText}>Already have an account?
+                            <Text onPress={() => navigation.navigate('Login')} style={styles.Login}>{' '}Login!</Text>
+                        </Text>
                     </View>
                 )
             }
