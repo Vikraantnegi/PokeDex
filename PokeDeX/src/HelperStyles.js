@@ -25,7 +25,22 @@ export const HelperStyles = StyleSheet.create({
     },
     PokeBall: {
         position: 'absolute',
-        left: '50%',
+        top: '-16.5%',
+        right: '-31.5%',
+    },
+    PokeBall1: {
+        transform: [{rotate: '180deg'}],
+        resizeMode: 'contain',
+        width: 300,
+    },
+    PokeBall2: {
+        resizeMode: 'contain',
+        width: 300,
+        marginTop: -60,
+    },
+    MenuIcon: {
+        position: 'absolute',
+        right: 20,
         top: 40,
     },
 });

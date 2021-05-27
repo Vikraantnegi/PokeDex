@@ -53,7 +53,7 @@ export const RootStackScreen = () => {
 
 const Drawer = createDrawerNavigator();
 const DrawerScreen = () => (
-  <Drawer.Navigator initialRouteName="Home">
+  <Drawer.Navigator initialRouteName="Home" drawerPosition="right">
     <Drawer.Screen name="Home" component={TabsScreen} />
     <Drawer.Screen name="Pokedex" component={PokedexScreen} />
     <Drawer.Screen name="TopNews" component={TopNewsScreen} />
