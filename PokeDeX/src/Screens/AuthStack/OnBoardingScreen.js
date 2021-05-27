@@ -2,7 +2,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {useState} from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
-import {HelperStyles} from '../../HelperStyles';
+import {HelperStyles, Fonts} from '../../HelperStyles';
 import Icon from 'react-native-vector-icons/Feather';
 import FirstScreen from '../../Components/OnBoarding/FirstScreen';
 import SecondScreen from '../../Components/OnBoarding/SecondScreen';
@@ -85,13 +85,14 @@ const styles = StyleSheet.create({
     },
     WelcomeText: {
         fontSize: 20,
-        fontWeight: '400',
         color: '#00041f',
+        fontFamily: Fonts.fontLight,
     },
     HeadingText: {
         fontSize: 40,
-        fontWeight: '800',
         color: '#fe0000',
+        fontFamily: Fonts.fontBold,
+        marginTop: -10,
     },
     onBoardImage: {
         width: '100%',
@@ -108,7 +109,7 @@ const styles = StyleSheet.create({
         top: 20,
         right: 20,
         fontSize: 14,
-        fontWeight: '500',
+        fontFamily: Fonts.fontMedium,
     },
     Indices: {
         marginVertical: 20,
@@ -167,13 +168,14 @@ const styles = StyleSheet.create({
     },
     InnerTextHeading: {
         fontSize: 28,
-        fontWeight: '700',
+        fontFamily: Fonts.fontBold,
         color: '#17171B',
     },
     InnerText: {
         color: '#747476',
-        fontSize: 20,
-        fontWeight: '400',
+        marginTop: -10,
+        fontSize: 18,
+        fontFamily: Fonts.fontRegular,
         textAlign: 'center',
     },
     ActionButtons: {
@@ -194,16 +196,18 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: 'white',
         textAlign: 'center',
+        fontFamily: Fonts.fontExtraBold,
     },
     ActionText: {
         fontSize: 14,
         color: '#747476',
         textAlign: 'center',
         marginTop: 5,
+        fontFamily: Fonts.fontRegular,
     },
     Login: {
         fontSize: 14,
-        fontWeight: '700',
         color: '#17171B',
+        fontFamily: Fonts.fontBold,
     },
   });

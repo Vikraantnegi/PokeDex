@@ -1,11 +1,12 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Image } from 'react-native';
+import { HelperStyles } from '../../HelperStyles';
 
 export default function HomeScreen() {
     return (
-        <View>
-            <Text>HomeScreen</Text>
+        <View style={HelperStyles.Container}>
+            <Image style={HelperStyles.PokeBall} source={require('../../assets/Pokeball.png')} />
         </View>
     );
 }
