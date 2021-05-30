@@ -11,6 +11,7 @@ import PokeCard from '../../Components/HomeScreen/PokeCard';
 import LoginBanner from '../../Components/HomeScreen/LoginBanner';
 import PokeNewsCard from '../../Components/PokeNewsCard';
 import NewsData from '../../Data/DataFiles/NewsData';
+import LegendaryPokemons from '../../Data/DataFiles/LegendaryPokemons';
 
 export default function HomeScreen({navigation}) {
 
@@ -29,11 +30,11 @@ export default function HomeScreen({navigation}) {
         );
     };
 
-    const Recommended = ({data}) => {
+    const Recommended = ({data, text}) => {
         return (
             <View style={styles.RecommendedSection}>
                 <View style={styles.SectionHead}>
-                    <Text style={styles.SectionHeading}>Recommended</Text>
+                    <Text style={styles.SectionHeading}>{text}</Text>
                     <Text style={styles.ViewAll}>View All</Text>
                 </View>
                 <View style={styles.Recommended}>
@@ -81,9 +82,10 @@ export default function HomeScreen({navigation}) {
                             <SearchComponent placeholder="Search your favorite Pokémon here..." />
                         </View>
                         <HomeService data={HomeServices} />
-                        <Recommended data={RecommendedData} />
+                        <Recommended data={RecommendedData} text="Recommended" />
                         <LoginBanner />
                         <News data={NewsData} />
+                        <Recommended data={LegendaryPokemons} text="Legendary Pokémons" />
                     </View>
                 </>
             </ScrollView>
@@ -130,7 +132,7 @@ const styles = StyleSheet.create({
     NewsSection : {
         display: 'flex',
         flexDirection: 'column',
-        marginTop: 20,
+        marginTop: 30,
         marginBottom: 10,
     },
     SectionHead: {
