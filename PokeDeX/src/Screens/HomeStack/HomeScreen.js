@@ -9,6 +9,8 @@ import HomeServices from '../../Data/DataFiles/HomeServices';
 import RecommendedData from '../../Data/DataFiles/RecommendedData';
 import PokeCard from '../../Components/HomeScreen/PokeCard';
 import LoginBanner from '../../Components/HomeScreen/LoginBanner';
+import PokeNewsCard from '../../Components/PokeNewsCard';
+import NewsData from '../../Data/DataFiles/NewsData';
 
 export default function HomeScreen({navigation}) {
 
@@ -30,11 +32,32 @@ export default function HomeScreen({navigation}) {
     const Recommended = ({data}) => {
         return (
             <View style={styles.RecommendedSection}>
-                <Text style={styles.SectionHeading}>Recommended</Text>
+                <View style={styles.SectionHead}>
+                    <Text style={styles.SectionHeading}>Recommended</Text>
+                    <Text style={styles.ViewAll}>View All</Text>
+                </View>
                 <View style={styles.Recommended}>
                     {
                         data.map((poke, index) => (
                             <PokeCard key={index} name={poke.name} image={poke.image} species={poke.species} type={poke.type} bgColor={poke.backgroundColor} />
+                        ))
+                    }
+                </View>
+            </View>
+        );
+    };
+
+    const News = ({data}) => {
+        return (
+            <View style={styles.NewsSection}>
+                <View style={styles.SectionHead}>
+                    <Text style={styles.SectionHeading}>Poké News</Text>
+                    <Text style={styles.ViewAll}>View All</Text>
+                </View>
+                <View style={styles.Recommended}>
+                    {
+                        data.map((news, index) => (
+                             <PokeNewsCard key={index} title={news.title} image={news.image} date={news.date} />
                         ))
                     }
                 </View>
@@ -53,13 +76,14 @@ export default function HomeScreen({navigation}) {
                     <EntIcon name="menu" size={35} color="#000" style={HelperStyles.MenuIcon} onPress={() => navigation.toggleDrawer()} />
                     <View style={styles.HomeContainer}>
                         <View style={styles.Menu}>
-                            <Text style={styles.MenuHeading}>Pokemon Fan?</Text>
+                            <Text style={styles.MenuHeading}>Pokémon Fan?</Text>
                             <Text style={styles.MenuSubtitles}>You have come to the right place.</Text>
-                            <SearchComponent placeholder="Search your favorite Pokemon here..." />
+                            <SearchComponent placeholder="Search your favorite Pokémon here..." />
                         </View>
                         <HomeService data={HomeServices} />
                         <Recommended data={RecommendedData} />
                         <LoginBanner />
+                        <News data={NewsData} />
                     </View>
                 </>
             </ScrollView>
@@ -102,5 +126,22 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         flexWrap: 'wrap',
         marginVertical: 20,
+    },
+    NewsSection : {
+        display: 'flex',
+        flexDirection: 'column',
+        marginTop: 20,
+        marginBottom: 10,
+    },
+    SectionHead: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    },
+    ViewAll: {
+        color: '#013d85',
+        fontFamily: Fonts.fontSemi,
+        fontSize: 14,
     },
 });
