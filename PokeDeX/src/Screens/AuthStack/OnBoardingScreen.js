@@ -28,7 +28,7 @@ export default function OnBoardingScreen({navigation}) {
     };
 
     return (
-        <View style={HelperStyles.Container}>
+        <View style={[HelperStyles.Container, {paddingHorizontal: 20, paddingVertical: 40}]}>
             <Text onPress={() => navigation.navigate('Home')} style={styles.Skip}>Skip</Text>
             <View style={styles.Heading}>
                 <Text style={styles.WelcomeText}>Welcome to</Text>

@@ -1,22 +1,22 @@
 /* eslint-disable prettier/prettier */
 export default [
     {
-        image: require('../Pokedex.png'),
+        image: require('../../assets/Pokedex.png'),
         text: 'Pokedex',
         route : 'Pokedex',
     },
     {
-        image: require('../Types.png'),
+        image: require('../../assets/Types.png'),
         text: 'Types',
         route : 'Types',
     },
     {
-        image: require('../onB1.png'),
+        image: require('../../assets/onB1.png'),
         text: 'Abilites',
         route : 'Abilites',
     },
     {
-        image: require('../ball.png'),
+        image: require('../../assets/ball.png'),
         text: 'Moves',
         route : 'Moves',
     },
