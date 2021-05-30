@@ -4,7 +4,7 @@ import React from 'react';
 import { Text, StyleSheet, Pressable, Image } from 'react-native';
 import { Fonts } from '../../HelperStyles';
 
-export default function ServiceComponent({image, text, route}) {
+export default function CategoryComponent({image, text, route}) {
     const navigation = useNavigation();
     return (
         <Pressable style={styles.ServiceContainer} onPress={() => navigation.navigate(route)}>
@@ -16,18 +16,21 @@ export default function ServiceComponent({image, text, route}) {
 
 const styles = StyleSheet.create({
     ServiceContainer: {
-        marginVertical: 10,
-        paddingHorizontal: 10,
+        height: 80,
+        width: 80,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     ServiceText: {
-        fontFamily: Fonts.fontBold,
+        fontFamily: Fonts.fontRegular,
         color: '#17171B',
-        fontSize: 20,
-        textAlign: 'center',
+        fontSize: 14,
     },
     ServiceImage: {
+        height: '100%',
+        width: '100%',
         resizeMode: 'contain',
-        height: 130,
-        width: 130,
     },
 });

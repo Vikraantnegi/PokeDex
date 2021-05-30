@@ -16,7 +16,7 @@ export default function SearchComponent({placeholder}) {
                 onChange={(event) => setInput(event.target.value)}
                 placeholder={placeholder}
                 placeholderTextColor="#747476"
-                underlineColorAndroid="transparent"
+                underlineColorAndroid={'transparent'}
             />
             <FAIcon name="search" size={20} color="#17171B" style={styles.Icon} />
         </View>
@@ -33,8 +33,8 @@ const styles = StyleSheet.create({
         paddingRight: 20,
         color: 'black',
         zIndex: 1,
-        fontSize: 17,
-        marginBottom: 0,
+        fontSize: 14,
+        margin: 0,
         paddingVertical: 10,
         width: '100%',
     },
