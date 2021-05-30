@@ -17,9 +17,12 @@ export const HelperStyles = StyleSheet.create({
     Container :{
         width: Dimensions.get('screen').width,
         height: Dimensions.get('screen').height,
+        flex: 1,
         display: 'flex',
         position: 'relative',
-        backgroundColor: '#fff',
+        backgroundColor: 'white',
+    },
+    ScrollView: {
         paddingHorizontal: 20,
         paddingVertical: 40,
     },
