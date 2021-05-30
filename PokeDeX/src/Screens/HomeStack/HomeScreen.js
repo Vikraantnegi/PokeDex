@@ -8,8 +8,40 @@ import SearchComponent from '../../Components/SearchComponent';
 import HomeServices from '../../Data/DataFiles/HomeServices';
 import RecommendedData from '../../Data/DataFiles/RecommendedData';
 import PokeCard from '../../Components/HomeScreen/PokeCard';
+import LoginBanner from '../../Components/HomeScreen/LoginBanner';
 
 export default function HomeScreen({navigation}) {
+
+    const HomeService = ({data}) => {
+        return (
+            <View style={styles.CategorySection}>
+                <Text style={styles.SectionHeading}>Categories</Text>
+                <View style={styles.Services}>
+                    {
+                        data.map((service, index) => (
+                            <CategoryComponent key={index} image={service.image} text={service.text} route={service.route} />
+                        ))
+                    }
+                </View>
+            </View>
+        );
+    };
+
+    const Recommended = ({data}) => {
+        return (
+            <View style={styles.RecommendedSection}>
+                <Text style={styles.SectionHeading}>Recommended</Text>
+                <View style={styles.Recommended}>
+                    {
+                        data.map((poke, index) => (
+                            <PokeCard key={index} name={poke.name} image={poke.image} species={poke.species} type={poke.type} bgColor={poke.backgroundColor} />
+                        ))
+                    }
+                </View>
+            </View>
+        );
+    };
+
     return (
         <View style={HelperStyles.Container}>
             <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollView} contentContainerStyle={HelperStyles.ScrollView}>
@@ -25,26 +57,9 @@ export default function HomeScreen({navigation}) {
                             <Text style={styles.MenuSubtitles}>You have come to the right place.</Text>
                             <SearchComponent placeholder="Search your favorite Pokemon here..." />
                         </View>
-                        <View style={styles.CategorySection}>
-                            <Text style={styles.SectionHeading}>Categories</Text>
-                            <View style={styles.Services}>
-                                {
-                                    HomeServices.map((service, index) => (
-                                        <CategoryComponent key={index} image={service.image} text={service.text} route={service.route} />
-                                    ))
-                                }
-                            </View>
-                        </View>
-                        <View style={styles.RecommendedSection}>
-                            <Text style={styles.SectionHeading}>Recommended</Text>
-                            <View style={styles.Recommended}>
-                                {
-                                    RecommendedData.map((poke, index) => (
-                                        <PokeCard key={index} name={poke.name} image={poke.image} species={poke.species} type={poke.type} bgColor={poke.backgroundColor} />
-                                    ))
-                                }
-                            </View>
-                        </View>
+                        <HomeService data={HomeServices} />
+                        <Recommended data={RecommendedData} />
+                        <LoginBanner />
                     </View>
                 </>
             </ScrollView>
