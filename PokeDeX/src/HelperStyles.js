@@ -19,17 +19,21 @@ export const HelperStyles = StyleSheet.create({
         height: Dimensions.get('screen').height,
         flex: 1,
         display: 'flex',
-        position: 'relative',
         backgroundColor: 'white',
     },
     ScrollView: {
+        paddingHorizontal: 0,
+        paddingVertical: 0,
+    },
+    innerView: {
         paddingHorizontal: 20,
         paddingVertical: 40,
+        position: 'relative',
     },
     PokeBall: {
         position: 'absolute',
-        top: '-16.5%',
         right: '-31.5%',
+        top: '-6%',
     },
     PokeBall1: {
         transform: [{rotate: '180deg'}],

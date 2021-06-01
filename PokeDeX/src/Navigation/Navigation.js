@@ -17,7 +17,6 @@ import TrainersScreen from '../Screens/HomeStack/TrainersScreen';
 import AbilitiesScreen from '../Screens/HomeStack/AbilitiesScreen';
 import MovesScreen from '../Screens/HomeStack/MovesScreen';
 import CreatorFavScreen from '../Screens/HomeStack/CreatorFavScreen';
-import TopNewsScreen from '../Screens/HomeStack/TopNewsScreen';
 import OnBoardingScreen from '../Screens/AuthStack/OnBoardingScreen';
 import SignUpScreen from '../Screens/AuthStack/SignUpScreen';
 import LoginScreen from '../Screens/AuthStack/LoginScreen';
@@ -27,6 +26,7 @@ import EditProfileScreen from '../Screens/AuthStack/EditProfileScreen';
 import ChangePasswordScreen from '../Screens/AuthStack/ChangePasswordScreen';
 import AboutScreen from '../Screens/HomeStack/AboutScreen';
 import SplashScreen from '../Screens/SplashScreen';
+import DrawerContent from '../Components/DrawerContent';
 
 const RootStack = createStackNavigator();
 export const RootStackScreen = () => {
@@ -53,17 +53,16 @@ export const RootStackScreen = () => {
 
 const Drawer = createDrawerNavigator();
 const DrawerScreen = () => (
-  <Drawer.Navigator initialRouteName="Home" drawerPosition="right">
-    <Drawer.Screen name="Home" component={TabsScreen} />
-    <Drawer.Screen name="Pokedex" component={PokedexScreen} />
-    <Drawer.Screen name="TopNews" component={TopNewsScreen} />
-    <Drawer.Screen name="LegendaryPokemon" component={LegendaryPokemonScreen} />
-    <Drawer.Screen name="CreatorFav" component={CreatorFavScreen} />
-    <Drawer.Screen name="Profile" component={ProfileScreen} />
-    <Drawer.Screen name="Settings" component={SettingsScreen} />
-    <Drawer.Screen name="Logout" component={LogoutScreen} />
-    <Drawer.Screen name="About" component={AboutScreen} />
-  </Drawer.Navigator>
+    <Drawer.Navigator
+        initialRouteName="Home"
+        drawerPosition="right"
+        drawerContent={ props => <DrawerContent {...props}/>}
+    >
+        <Drawer.Screen
+            name="Home"
+            component={HomeStackScreen}
+        />
+    </Drawer.Navigator>
 );
 
 const Tabs = createBottomTabNavigator();
@@ -88,7 +87,7 @@ export const HomeStackScreen = () => {
         >
             <HomeStack.Screen name="Home" component={HomeScreen} />
             <HomeStack.Screen name="Pokedex" component={PokedexScreen} />
-            <SettingsStack.Screen name="About" component={AboutScreen} />
+            <HomeStack.Screen name="About" component={AboutScreen} />
             <HomeStack.Screen name="Pokemon" component={PokemonScreen} />
             <HomeStack.Screen name="News" component={NewsScreen} />
             <HomeStack.Screen name="LegendaryPokemon" component={LegendaryPokemonScreen} />
@@ -97,6 +96,7 @@ export const HomeStackScreen = () => {
             <HomeStack.Screen name="Trainers" component={TrainersScreen} />
             <HomeStack.Screen name="Abilities" component={AbilitiesScreen} />
             <HomeStack.Screen name="Moves" component={MovesScreen} />
+            <HomeStack.Screen name="CreatorFav" component={CreatorFavScreen} />
         </HomeStack.Navigator>
     );
 };

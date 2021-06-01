@@ -69,7 +69,7 @@ export default function HomeScreen({navigation}) {
     return (
         <View style={HelperStyles.Container}>
             <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollView} contentContainerStyle={HelperStyles.ScrollView}>
-                <>
+                <View style={HelperStyles.innerView}>
                     <View style={HelperStyles.PokeBall}>
                         <Image style={HelperStyles.PokeBall1} source={require('../../assets/Pokeball.png')} />
                         <Image style={HelperStyles.PokeBall2} source={require('../../assets/Pokeball.png')} />
@@ -87,7 +87,7 @@ export default function HomeScreen({navigation}) {
                         <News data={NewsData} />
                         <Recommended data={LegendaryPokemons} text="Legendary Pokémons" />
                     </View>
-                </>
+                </View>
             </ScrollView>
         </View>
     );

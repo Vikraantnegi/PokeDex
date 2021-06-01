@@ -7,23 +7,14 @@ import MIcons from 'react-native-vector-icons/MaterialIcons';
 
 const routes = [
   { name: 'Home', route: 'Home' },
-//   { name: 'Model 3', route: 'Home' },
-//   { name: 'Model X', route: 'Home' },
-//   { name: 'Model Y', route: 'Home' },
-//   { name: 'Solar Roof', route: 'Home' },
-//   { name: 'Solar Panels', route: 'Home' },
-//   { name: 'Existing Inventory', route: 'Home' },
-//   { name: 'Used Inventory', route: 'Home' },
-//   { name: 'Trade-in', route: 'Home' },
-//   { name: 'Powerwall', route: 'Home' },
-//   { name: 'Commercial Energy', route: 'Home' },
-//   { name: 'Utilities', route: 'Home' },
-//   { name: 'Test Drive', route: 'Home' },
-//   { name: 'Charging', route: 'Home' },
-//   { name: 'Find Us', route: 'Home' },
-//   { name: 'Support', route: 'Home' },
-//   { name: 'Careers', route: 'Home' },
-//   { name: 'Shop', route: 'Home' },
+  { name: 'Pokedex', route: 'Pokedex' },
+  { name: 'TopNews', route: 'News' },
+  { name: 'LegendaryPokemon', route: 'LegendaryPokemon' },
+  { name: 'CreatorFav', route: 'CreatorFav' },
+  { name: 'Profile', route: 'Profile' },
+  { name: 'Settings', route: 'Settings' },
+  { name: 'Logout', route: 'Logout' },
+  { name: 'About', route: 'About' },
 ];
 
 const DrawerContent = (props) => {
