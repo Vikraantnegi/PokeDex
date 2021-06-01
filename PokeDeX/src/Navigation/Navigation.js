@@ -27,26 +27,18 @@ import ChangePasswordScreen from '../Screens/AuthStack/ChangePasswordScreen';
 import AboutScreen from '../Screens/HomeStack/AboutScreen';
 import SplashScreen from '../Screens/SplashScreen';
 import DrawerContent from '../Components/DrawerContent';
+import MCIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import IonIcons from 'react-native-vector-icons/Ionicons';
+import { View, StyleSheet } from 'react-native';
+import { Text } from 'react-native-animatable';
 
 const RootStack = createStackNavigator();
 export const RootStackScreen = () => {
     return (
         <RootStack.Navigator headerMode="none">
-            <RootStack.Screen name="Splash" component={SplashScreen}
-                // options={{
-                // animationEnabled: false,
-                // }}
-            />
-            <RootStack.Screen name="Home" component={DrawerScreen}
-                // options={{
-                // animationEnabled: false,
-                // }}
-            />
-            <RootStack.Screen name="Auth" component={AuthStackScreen}
-                // options={{
-                // animationEnabled: false,
-                // }}
-            />
+            <RootStack.Screen name="Splash" component={SplashScreen} />
+            <RootStack.Screen name="Home" component={DrawerScreen}  />
+            <RootStack.Screen name="Auth" component={AuthStackScreen} />
         </RootStack.Navigator>
     );
 };
@@ -60,14 +52,53 @@ const DrawerScreen = () => (
     >
         <Drawer.Screen
             name="Home"
-            component={HomeStackScreen}
+            component={TabsScreen}
         />
     </Drawer.Navigator>
 );
 
 const Tabs = createBottomTabNavigator();
 const TabsScreen = () => (
-    <Tabs.Navigator initialRouteName="Home">
+    // tabBar = {props => <CustomTabBar {...props}}
+    <Tabs.Navigator
+        initialRouteName="Home"
+        screenOptions={({ route }) => ({
+          tabBarLabel: ({focused, color}) => {
+            return !focused ? <Text style={styles.tabBarLabel}>{route.name}</Text> : null;
+          },
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
+            if (route.name === 'Home') {
+              iconName = focused
+                ? 'home-variant'
+                : 'home-variant-outline';
+            } else if (route.name === 'Settings') {
+              iconName = focused ? 'settings' : 'settings-outline';
+            } else if (route.name === 'Pokedex') {
+              iconName = focused ? 'pokeball' : 'pokeball';
+            } else if (route.name === 'Favorite') {
+              iconName = focused ? 'heart' : 'heart-outline';
+            } else if (route.name === 'Search') {
+              iconName = focused ? 'search' : 'search-outline';
+            }
+            return (
+                <View style={focused ? styles.FocusedIconContainer : styles.IconContainer}>
+                    {
+                        route.name === 'Home' || route.name === 'Pokedex' ?
+                            <MCIcons name={iconName} size={size} color={focused ? 'white' : color} /> :
+                            <IonIcons name={iconName} size={size} color={focused ? 'white' : color} />
+                    }
+                </View>
+            );
+          },
+        })}
+        tabBarOptions={{
+          activeTintColor: '#fe0000',
+          inactiveTintColor: '#fe0000',
+          showLabel: true,
+          style: {paddingBottom: 5, height: 60},
+        }}
+    >
       <Tabs.Screen name="Home" component={HomeStackScreen} />
       <Tabs.Screen name="Search" component={SearchScreen} />
       <Tabs.Screen name="Pokedex" component={PokedexScreen} />
@@ -137,3 +168,23 @@ export const AuthStackScreen = () => (
         <AuthStack.Screen name="Logout" component={LogoutScreen} />
     </AuthStack.Navigator>
 );
+
+const styles = StyleSheet.create({
+    FocusedIconContainer: {
+        height: 45,
+        width: 45,
+        borderRadius: 35,
+        justifyContent: 'center',
+        alignItems: 'center',
+        color: 'white',
+        backgroundColor: '#fe0000',
+        zIndex: 1,
+    },
+    IconContainer: {
+    },
+    tabBarLabel:{
+        fontSize: 12,
+        fontWeight: 'bold',
+        color: '#fe0000',
+    },
+});

@@ -4,17 +4,19 @@ import React from 'react';
 import {View, StyleSheet, Pressable} from 'react-native';
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 import MIcons from 'react-native-vector-icons/MaterialIcons';
+import FIcons from 'react-native-vector-icons/Feather';
+import { Fonts } from '../HelperStyles';
 
 const routes = [
-  { name: 'Home', route: 'Home' },
-  { name: 'Pokedex', route: 'Pokedex' },
-  { name: 'TopNews', route: 'News' },
-  { name: 'LegendaryPokemon', route: 'LegendaryPokemon' },
-  { name: 'CreatorFav', route: 'CreatorFav' },
-  { name: 'Profile', route: 'Profile' },
-  { name: 'Settings', route: 'Settings' },
-  { name: 'Logout', route: 'Logout' },
-  { name: 'About', route: 'About' },
+  { name: 'Home', route: 'Home', icon: 'home' },
+  { name: 'Pokedex', route: 'Pokedex', icon: 'perm-device-info' },
+  { name: 'Trending News', route: 'News', icon: 'menu-book' },
+  { name: 'Legendary Pokemon', route: 'LegendaryPokemon', icon: 'home' },
+  { name: "Creator's Favorite", route: 'CreatorFav', icon: 'ballot' },
+  { name: 'Profile', route: 'Profile', icon: 'person' },
+  { name: 'Settings', route: 'Settings', icon: 'settings' },
+  { name: 'Logout', route: 'Logout', icon: 'logout' },
+  { name: 'About', route: 'About', icon: 'description' },
 ];
 
 const DrawerContent = (props) => {
@@ -29,6 +31,15 @@ const DrawerContent = (props) => {
             routes.map((route, index) => (
               <DrawerItem
                 key={index}
+                icon={() => (
+                  <Pressable activeOpacity={1} style={styles.innerContainer}>
+                    <MIcons
+                      name={route.icon}
+                      size={25}
+                      style={styles.Icon}
+                    />
+                  </Pressable>
+                )}
                 pressOpacity={0.2}
                 label={route.name}
                 labelStyle={styles.drawerText}
@@ -54,10 +65,21 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   drawerText: {
-    fontSize: 14,
-    fontWeight: '400',
-    textTransform: 'uppercase',
+    fontSize: 16,
+    fontFamily: Fonts.fontSemi,
+    marginLeft: -20,
     color: 'rgb(57, 60, 65)',
+  },
+  innerContainer:{
+    height: 30,
+    width: 30,
+    borderRadius: 15,
+    justifyContent: 'center',
+  },
+  Icon: {
+    alignSelf: 'center',
+    marginBottom: 4,
+    color: '#fe0000',
   },
 });
 
